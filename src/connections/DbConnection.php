@@ -14,8 +14,7 @@ class DbConnection
         // Load configuration
         $config = require __DIR__ . '/../config.php';  // Adjust path if necessary
 
-        var_dump( sprintf("pgsql:host=%s;port=%s;dbname=%s", $config['db']['read']['host'], $config['db']['read']['port'], $config['db']['read']['name']),
-    );
+
 
         // Setup write connection (primary DB)
         $this->writePdo = new PDO(
