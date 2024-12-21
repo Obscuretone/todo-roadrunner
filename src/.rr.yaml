@@ -1,0 +1,9 @@
+version: "3"  # This is required, specify the version of the configuration
+
+
+http:
+  address: 0.0.0.0:8080
+  middleware: []
+
+server:
+  command: "php index.php"
