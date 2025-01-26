@@ -6,4 +6,4 @@ http:
   middleware: []
 
 server:
-  command: "php index.php"
+  command: "php src/index.php"
