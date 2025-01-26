@@ -4,7 +4,7 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ./src:/var/www/html
+      - ./:/var/www/html
     environment:
       - DB_NAME=todo
 

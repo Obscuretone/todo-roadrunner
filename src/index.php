@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 require __DIR__ . '/router.php'; 
 
 use Nyholm\Psr7\Factory\Psr17Factory;

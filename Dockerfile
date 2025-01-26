@@ -7,7 +7,9 @@ COPY --from=roadrunner /usr/bin/rr /usr/local/bin/rr
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* && apt-get update && apt-get update && apt-get install -y git unzip libpq-dev && \
     docker-php-ext-install pdo pdo_pgsql sockets && \
     pecl install redis && \
-    docker-php-ext-enable redis
+    docker-php-ext-enable redis && \
+    pecl install xdebug && \
+    docker-php-ext-enable xdebug
 
 # Install Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
@@ -16,11 +18,11 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www/html
 
 # Copy dependencies and source files
-COPY src/composer.json .
+COPY composer.json .
 RUN composer install
 
 # Copy source files
-COPY src/ .
+COPY . .
 
 CMD rr serve
 
