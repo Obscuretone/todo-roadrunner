@@ -9,6 +9,7 @@ use Spiral\RoadRunner\Worker;
 use Spiral\RoadRunner\Http\PSR7Worker;
 use Services\TaskService;
 use Controllers\TaskController;
+use Repositories\TaskRepository;
 use Connections\DbConnection;
 use Connections\RedisConnection;
 
@@ -22,9 +23,10 @@ $psr7 = new PSR7Worker($worker, $factory, $factory, $factory);
 // Instantiate DbConnection and RedisConnection
 $dbConnection = new DbConnection();
 $redisConnection = new RedisConnection();
+$taskRepository = new TaskRepository($dbConnection->getWriteConnection(), $dbConnection->getReadConnection());
 
 // Instantiate TaskService and inject dependencies
-$taskService = new TaskService($dbConnection, $redisConnection);
+$taskService = new TaskService($taskRepository, $redisConnection);
 
 // Instantiate TaskController and inject TaskService
 $taskController = new TaskController($taskService);

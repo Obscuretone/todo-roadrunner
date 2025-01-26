@@ -20,6 +20,7 @@ class TaskController
             $tasks = $this->taskService->getTasks();
             return new Response(200, ['Content-Type' => 'application/json'], json_encode($tasks));
         } catch (\Exception $e) {
+            error_log($e);
             return new Response(500, ['Content-Type' => 'application/json'], json_encode(['message' => 'Failed to fetch tasks']));
         }
     }
