@@ -23,7 +23,7 @@ $psr7 = new PSR7Worker($worker, $factory, $factory, $factory);
 // Instantiate DbConnection and RedisConnection
 $dbConnection = new DbConnection();
 $redisConnection = new RedisConnection();
-$taskRepository = new TaskRepository($dbConnection->getWriteConnection(), $dbConnection->getReadConnection());
+$taskRepository = new TaskRepository($dbConnection);
 
 // Instantiate TaskService and inject dependencies
 $taskService = new TaskService($taskRepository, $redisConnection);
