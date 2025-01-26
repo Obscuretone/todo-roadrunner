@@ -6,6 +6,7 @@ namespace Repositories;
 
 use PDO;
 use PDOException;
+use Connections\DbConnection;
 use Ramsey\Uuid\Guid\Guid;
 
 class TaskRepository
@@ -13,10 +14,11 @@ class TaskRepository
     private $writePdo;
     private $readPdo;
 
-    public function __construct(PDO $writePdo, PDO $readPdo)
+    public function __construct(DbConnection $dbConnection)
     {
-        $this->writePdo = $writePdo;
-        $this->readPdo = $readPdo;
+
+        $this->readPdo = $dbConnection->getReadConnection();
+        $this->writePdo = $dbConnection->getWriteConnection();
     }
 
     // Get all tasks from the database
