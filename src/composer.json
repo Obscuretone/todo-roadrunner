@@ -13,7 +13,8 @@
         "psr-4": {
             "Services\\": "services/",
             "Connections\\": "connections/",
-            "Controllers\\": "controllers/"
+            "Controllers\\": "controllers/",
+            "Repositories\\": "repositories/"
         }
     }
 }
