@@ -15,3 +15,9 @@ This isn’t your run-of-the-mill to-do app. It’s built using cutting-edge tec
 - Redis for caching, making sure your app is fast and responsive.
 - Custom PHP code because it gives us full control over every part of the app.
 - Seperate read and write Postgres connections for horizontal scaling
+
+## Local configuration
+
+Copy `.env.example` to `.env` for local development. The example uses the
+disposable database credentials from Docker Compose; use separate credentials
+for any other environment. Keep your local `.env` out of Git.
